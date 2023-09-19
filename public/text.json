@@ -1,0 +1,14 @@
+[
+    {
+        "level": "EASY",
+        "text": "The sun shines brightly in the sky. Birds chirp merrily on the branches of trees. Flowers bloom in a riot of colors in the garden. A gentle breeze rustles through the leaves, creating a peaceful atmosphere."
+    },
+    {
+        "level": "MEDIUM",
+        "text": "As we navigate the complexities of the modern world, it's essential to develop a wide range of skills. From communication and teamwork to adaptability and problem-solving, the demands on individuals have never been greater. Success in both personal and professional spheres often hinges on our ability to acquire new knowledge and apply it effectively."
+    },
+    {
+        "level": "HARD",
+        "text": "In the realm of artificial intelligence, deep learning algorithms have revolutionized the way we process and analyze data. These neural networks, inspired by the structure of the human brain, have enabled remarkable advances in fields such as image recognition, natural language processing, and autonomous robotics. However, delving into the intricacies of deep learning requires a deep understanding of linear algebra, calculus, and complex mathematical concepts, making it a formidable challenge for aspiring AI researchers."
+    }
+]

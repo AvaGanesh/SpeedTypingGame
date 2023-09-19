@@ -1,10 +1,27 @@
 import { useState } from 'react';
 import './App.css';
+import { Paragraph } from './components/parapraph';
+import { DifficultyLevel } from './models/typing-text.model';
+import { Difficulty } from './components/difficulty';
+import { Typing } from './components/typing';
 
 function App() {
+  const [difficultyLevel, setDifficultyLevel] = useState<DifficultyLevel | undefined>(undefined);
+  const [userInputText, setUserInputText] = useState('');
+
+  const onDifficultyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDifficultyLevel(event.target.value as DifficultyLevel);
+  };
+
+  const onUserTyping = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setUserInputText(event.target.value);
+  };
+
   return (
     <>
-      <h1 className='text-3xl font-bold underline'>Hello world!</h1>
+      <Difficulty onDifficultyChange={onDifficultyChange} />
+      <Paragraph difficultLevel={difficultyLevel} />
+      <Typing onUserTyping={onUserTyping} />
     </>
   );
 }
