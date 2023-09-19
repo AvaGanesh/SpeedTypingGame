@@ -11,6 +11,7 @@ function App() {
 
   const onDifficultyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDifficultyLevel(event.target.value as DifficultyLevel);
+    setUserInputText('');
   };
 
   const onUserTyping = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -20,7 +21,7 @@ function App() {
   return (
     <>
       <Difficulty onDifficultyChange={onDifficultyChange} />
-      <Paragraph difficultLevel={difficultyLevel} />
+      <Paragraph difficultLevel={difficultyLevel} userInput={userInputText} />
       <Typing onUserTyping={onUserTyping} />
     </>
   );
