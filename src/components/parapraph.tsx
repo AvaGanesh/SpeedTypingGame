@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { DifficultyLevel, TypingText } from '../models/typing-text.model';
 
 export const Paragraph = ({
@@ -9,13 +9,7 @@ export const Paragraph = ({
   userInput: string;
 }) => {
   const [paragraph, setParagraph] = useState('');
-  const [differences, setDifferences] = useState<
-    {
-      character: string;
-      index: number;
-      isValid: boolean;
-    }[]
-  >([]);
+  const validSentence = useMemo(() => paragraph.slice(0, userInput.length), [paragraph, userInput]);
 
   useEffect(() => {
     fetch('/text.json')
@@ -25,20 +19,17 @@ export const Paragraph = ({
       });
   }, [difficultLevel]);
 
-  useEffect(() => {
-    setDifferences([]);
-    const validSentence = paragraph.slice(0, userInput.length);
+  const differences = useMemo(() => {
+    const newDifferences = [];
     for (let i = 0; i < validSentence.length; i++) {
-      setDifferences((prev) => [
-        ...prev,
-        {
-          character: validSentence[i],
-          index: i,
-          isValid: validSentence[i] === userInput[i],
-        },
-      ]);
+      newDifferences.push({
+        character: validSentence[i],
+        index: i,
+        isValid: validSentence[i] === userInput[i],
+      });
     }
-  }, [userInput, paragraph]);
+    return newDifferences;
+  }, [validSentence, userInput]);
 
   return (
     <div>
